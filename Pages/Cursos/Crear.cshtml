@@ -1,0 +1,69 @@
+@page
+@model AplicacionWebRazor.Pages.Cursos.Crear
+@{
+    ViewData["Title"] = "Crear nuevo curso";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-info">Crear un nuevo curso</h2>
+    </div>
+
+    <div class="card-body">
+       <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container" style="padding: 30px">
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="curso.NombreCurso"></label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input asp-for="curso.NombreCurso"  class="form-control" />
+                    </div>
+                    <span asp-validation-for="curso.NombreCurso" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="curso.CantidadClases"></label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input asp-for="curso.CantidadClases"  class="form-control" />
+                    </div>
+                    <span asp-validation-for="curso.CantidadClases" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label asp-for="curso.Precio"></label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input asp-for="curso.Precio"  class="form-control" />
+                    </div>
+                    <span asp-validation-for="curso.Precio" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-2">
+                        <input type="submit" value="Crear" class="btn btn-primary form-control" />
+                    </div>
+                    <div class="col-sm-4">
+                        <a asp-page="Index" class="btn btn-success form-control">volver a lista</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+       </form>
+    </div>
+</div>

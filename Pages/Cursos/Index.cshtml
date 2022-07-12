@@ -1,0 +1,55 @@
+@page
+@model AplicacionWebRazor.Pages.Cursos.Index
+@{
+    ViewData["Title"] = "Mantenimiento de Cursos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="text-info">Lista de Cursos</h2>
+            </div>
+            <div class="col-sm-6">
+                <a asp-page="Crear" class="btn btn-primary">Crear nuevo curso</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="Post">
+        @if (Model.curso.Count()>0)
+        {
+            <br/><br/>
+            <table class="table table-striped border">
+                <tr class="table tablet-secondary">
+                    <th class="">@Html.DisplayNameFor(m => m.curso.First().Id)</th>
+                    <th class="">@Html.DisplayNameFor(m => m.curso.First().NombreCurso)</th>
+                    <th class="">@Html.DisplayNameFor(m => m.curso.First().CantidadClases)</th>
+                    <th class="">@Html.DisplayNameFor(m => m.curso.First().Precio)</th>
+                    <th class="">@Html.DisplayNameFor(m => m.curso.First().FechaCreacion)</th>
+                    <th>Acciones</th>
+                </tr>
+                @foreach (var item in Model.curso)
+                {
+                    <tr>
+                        <td class="">@Html.DisplayFor(m => item.Id)</td>
+                        <td class="">@Html.DisplayFor(m => item.NombreCurso)</td>
+                        <td class="">@Html.DisplayFor(m => item.CantidadClases)</td>
+                        <td class="">@Html.DisplayFor(m => item.Precio)</td>
+                        <td class="">@Html.DisplayFor(m => item.FechaCreacion)</td>
+                        <td>
+                            <a asp-route-id="@item.Id" asp-page="Editar" class="btn btn-success btn-sm">Editar</a>
+                            <button asp-page-handler="Borrar" asp-route-id="@item.Id" onclick="return-confirm{"Esta Seguro de borrar curso?"}" class="btn btn-danger">Eliminar</button>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        }else{
+            <p>no hay cursos disponibles</p>
+        }
+        </form>
+    </div>
+</div>
